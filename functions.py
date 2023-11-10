@@ -52,6 +52,13 @@ def offset(x, y, w, h):
     return x, y, w, h
 
 
+def get_rid_of_negative(x, y, w, h):
+    if x < 0: x = 0
+    if y < 0: y = 0
+    if w < 0: w = 0
+    if h < 0: h = 0
+    return x, y, w, h
+
 # --------- SplitData Functions ---------
 
 
