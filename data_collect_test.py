@@ -5,8 +5,6 @@ from const import *
 from time import time
 from functions import *
 
-# constants
-CLASS_ID = int(input("Are you collecting: Fake (0) or Real (1)? "))  # 0 is fake, 1 is real
 SAVE = input("Would you like to save the data? (y or any other letter...) ")
 SAVE_FAKE_VIDEOS = False
 
@@ -19,7 +17,6 @@ if SAVE_FAKE_VIDEOS:
 while True:
     # read the current frame from the webcam
     success, img = cap.read()
-    print(img)
     img_out = img.copy()
 
     # write frame to the fake training video
@@ -48,12 +45,6 @@ while True:
                 x, y, w, h = avoid_negative(x, y, w, h)
                 # blurriness
                 blur_list, blur_value = get_blurriness_list(blur_list, img, x, y, w, h, )
-                # normalization
-                x_center_n, y_center_n, w_n, h_n = normalize_values(img, x, y, w, h)
-                # avoid potential error
-                x_center_n, y_center_n, w_n, h_n = avoid_values_above_1(x_center_n, y_center_n, w_n, h_n)
-                # Append the properties to the list
-                info_list.append(f'{CLASS_ID} {x_center_n} {y_center_n} {w_n} {h_n}\n')
 
                 # Drawing
                 cv2.rectangle(img_out, (x, y, w, h), color=(255, 0, 0), thickness=3)

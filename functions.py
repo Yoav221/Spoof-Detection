@@ -35,6 +35,19 @@ def initialize_webcam():
     return cap
 
 
+def create_video_for_fake_training(cap, path="Videos for fake training/"):
+    frame_width = int(cap.get(3))
+    frame_height = int(cap.get(4))
+    size = (frame_width, frame_height)
+    counter_video_name = 1
+    while True:
+        file_name = f"{path}video_for_fake_{counter_video_name}.avi"
+        if not os.path.exists(file_name):
+            result = cv2.VideoWriter(file_name, cv2.VideoWriter_fourcc(*'MJPG'), 24, size)
+            break
+        counter_video_name += 1
+    return result
+
 def extract_time_now():
     time_now = time.time()
     time_now = str(time_now).split('.')
@@ -52,12 +65,49 @@ def offset(x, y, w, h):
     return x, y, w, h
 
 
-def get_rid_of_negative(x, y, w, h):
+def avoid_negative(x, y, w, h):
     if x < 0: x = 0
     if y < 0: y = 0
     if w < 0: w = 0
     if h < 0: h = 0
     return x, y, w, h
+
+
+def get_blurriness_list(img, x, y, w, h, blur_list, blur_thresh=BLUR_THRESH):
+    img_face = img[y:y + h, x:x + w]
+    blur_value = int(cv2.Laplacian(img_face, cv2.CV_64F).var())
+    if blur_value > blur_thresh:
+        blur_list.append(True)
+    else:
+        blur_list.append(False)
+    return blur_list, blur_value
+
+
+def normalize_values(img, x, y, w, h, floating_point=FLOATING_POINT):
+    # Finding midpoints and width/height of the image:
+    im_h, im_w, _ = img.shape
+    x_center, y_center = x + w / 2, y + h / 2
+    # Normalize:
+    x_center_n = round(x_center / im_w, floating_point)
+    y_center_n = round(y_center / im_h, floating_point)
+    w_n = round(w / im_w, floating_point)
+    h_n = round(h / im_h, floating_point)
+    return x_center_n, y_center_n, w_n, h_n
+
+
+def avoid_values_above_1(x_center_n, y_center_n, w_n, h_n):
+    if x_center_n > 1: x_center_n = 1
+    if y_center_n > 1: y_center_n = 1
+    if w_n > 1: y_center_n = 1
+    if h_n > 1: h_n = 1
+    return x_center_n, y_center_n, w_n, h_n
+
+
+def save_properties_in_txt(info_list, time_now, output_data_dir=OUTPUT_DATA_DIR):
+    for info in info_list:
+        f = open(f"{output_data_dir}/{time_now}.txt", 'a')
+        f.write(info)
+        f.close()
 
 # --------- SplitData Functions ---------
 
