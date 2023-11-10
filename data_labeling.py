@@ -7,9 +7,9 @@ from functions import *
 import os
 
 
-IMAGES_PATH = "DataSet/labeling_test"
+IMAGES_PATH = "DataSet/DataCollect"
 images = os.listdir(IMAGES_PATH)
-CLASS_ID = 1
+CLASS_ID = 1  # 1 for REAL, 0 for FAKE
 
 detector = FaceDetector()
 

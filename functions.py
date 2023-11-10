@@ -130,7 +130,8 @@ def get_shuffle_names():
     names_list = os.listdir("DataSet/all")
     unique_names = []
     for name in names_list:
-        unique_names.append(name.split('.')[0])
+        if name.split('.')[0] != "":
+            unique_names.append(name.split('.')[0])
 
     unique_names = list(set(unique_names))
     unique_names = unique_names[1:]
