@@ -44,7 +44,7 @@ while True:
                 # avoid potential error
                 x, y, w, h = avoid_negative(x, y, w, h)
                 # blurriness
-                blur_list, blur_value = get_blurriness_list(blur_list, img, x, y, w, h, )
+                blur_list, blur_value = get_blurriness_list(img, x, y, w, h, blur_list=blur_list)
 
                 # Drawing
                 cv2.rectangle(img_out, (x, y, w, h), color=(255, 0, 0), thickness=3)

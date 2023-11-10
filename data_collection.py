@@ -47,7 +47,8 @@ while True:
                 # avoid potential error
                 x, y, w, h = avoid_negative(x, y, w, h)
                 # blurriness
-                blur_list, blur_value = get_blurriness_list(blur_list, img, x, y, w, h, )
+                print(x, y, w, h)
+                blur_list, blur_value = get_blurriness_list(img, x, y, w, h, blur_list=blur_list)
                 # normalization
                 x_center_n, y_center_n, w_n, h_n = normalize_values(img, x, y, w, h)
                 # avoid potential error
