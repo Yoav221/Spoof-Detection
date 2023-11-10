@@ -57,10 +57,7 @@ while True:
                 x, y, w, h = offset(x, y, w, h)
 
                 # Avoid values below 0 (avoid potential error during live cam)
-                if x < 0: x = 0
-                if y < 0: y = 0
-                if w < 0: w = 0
-                if h < 0: h = 0
+                x, y, w, h = get_rid_of_negative(x, y, w, h)
 
                 # blurriness
                 img_face = img[y:y + h, x:x + w]
