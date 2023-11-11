@@ -90,11 +90,7 @@ def avoid_values_above_1(x_center_n, y_center_n, w_n, h_n):
     return x_center_n, y_center_n, w_n, h_n
 
 
-def save_properties_in_txt(info_list, time_now, output_data_dir=OUTPUT_DATA_DIR):
-    for info in info_list:
-        f = open(f"{output_data_dir}/{time_now}.txt", 'a')
-        f.write(info)
-        f.close()
+
 
 # --------- SplitData Functions ---------
 
