@@ -117,7 +117,6 @@ def get_shuffle_names(path):
             unique_names.append(name.split('.')[0])
 
     unique_names = list(set(unique_names))
-    unique_names = unique_names[1:]
 
     # Shuffle:
     random.shuffle(unique_names)

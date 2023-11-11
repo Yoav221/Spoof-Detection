@@ -7,9 +7,8 @@ from functions import saving_prediction_video
 
 # CONSTANTS
 prediction_video_input = input("If you want to save the video - type, else pass...")
-MODEL_PATH = "Models/9_nov_10_epochs.pt"
+WEIGHTS_PATH = "Models/9_nov_10_epochs.pt"
 CONFIDENCE = 0.6
-
 
 # webcam/video
 cap = cv2.VideoCapture(0)
@@ -17,7 +16,7 @@ cap.set(3, 640)
 cap.set(4, 480)
 
 # Load the weights
-model = YOLO(MODEL_PATH)
+model = YOLO(WEIGHTS_PATH)
 
 # object classes
 classNames = ["Fake", "Real"]

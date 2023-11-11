@@ -20,6 +20,7 @@ class DataLabel:
 
         self.detector = FaceDetector()
         self.img_names_list = []
+        self.count_total_img_info = 0
 
     def create_img_names_list(self):
         images = os.listdir(self.images_path)
@@ -67,9 +68,11 @@ class DataLabel:
                     # save the properties in text file
                     self.save_properties_in_txt(info_list, img_name)
                     print(f"The information of '{img_name}' is saved!")
+                    self.count_total_img_info += 1
 
 
 if __name__ == '__main__':
     l = DataLabel()
     l.create_img_names_list()
     l.label()
+    print("Total: {l.count_total_img_info}")

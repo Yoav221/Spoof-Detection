@@ -5,7 +5,7 @@ from itertools import islice
 from const import *
 from functions import *
 
-# INPUT_DATA_PATH = "DataSet/DataCollect" # For testing
+INPUT_DATA_PATH = "DataSet/DataCollect"  # For testing
 
 # Create directories and get the unique names:
 create_directories(SPLIT_DATA_PATH)
