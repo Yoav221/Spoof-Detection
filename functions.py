@@ -133,9 +133,9 @@ def get_remaining_to_train(total_img_count, train_length, val_length, test_lengt
 
 
 # Copy the files
-def copy_files(output, input=INPUT_DATA_PATH, output_file=SPLIT_DATA_PATH):
+def copy_files(output, input_dir, output_dir):
     list_of_sets = ["train", "validation", "test"]
     for i, out in enumerate(output):
         for file_name in out:
-            shutil.copy(f"{input}/{file_name}.jpg", f"{output_file}/{list_of_sets[i]}/images/{file_name}.jpg")
-            shutil.copy(f"{input}/{file_name}.txt", f"{output_file}/{list_of_sets[i]}/labels/{file_name}.txt")
+            shutil.copy(f"{input_dir}/{file_name}.jpg", f"{output_dir}/{list_of_sets[i]}/images/{file_name}.jpg")
+            shutil.copy(f"{input_dir}/{file_name}.txt", f"{output_dir}/{list_of_sets[i]}/labels/{file_name}.txt")

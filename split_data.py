@@ -5,11 +5,12 @@ from itertools import islice
 from const import *
 from functions import *
 
-# INPUT_DATA_PATH = "DataSet/DataCollect" # For testing
+# the path of the data we want to split
+INPUT_DIR = "DataSet/DataCollect"
 
 # Create directories and get the unique names:
 create_directories(SPLIT_DATA_PATH)
-unique_names = get_shuffle_names(path=INPUT_DATA_PATH)
+unique_names = get_shuffle_names(path=INPUT_DIR)
 
 # Calculate the length of train/val/test set:
 total_img_count = len(unique_names)
@@ -28,7 +29,7 @@ print(f"Total images: {total_img_count}\nTrain = {len(output[0])}, Validation = 
 
 
 # Copy the files to the relevant directory:
-copy_files(output)
+copy_files(output, input_dir=INPUT_DIR, output_dir=SPLIT_DATA_PATH)
 print("Split process completed.")
 
 # Create the data.yaml file for the YOLO Training

@@ -6,7 +6,7 @@ import os
 from functions import saving_prediction_video
 
 # CONSTANTS
-prediction_video_input = input("If you want to save the video - type, else pass...")
+prediction_video_input = input("If you want to save the prediction video - type, else pass...")
 MODEL_PATH = "Models/9_nov_10_epochs.pt"
 CONFIDENCE = 0.6
 
