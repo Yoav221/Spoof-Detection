@@ -109,8 +109,8 @@ def create_directories(SPLIT_DATA_PATH):
     os.makedirs(f"{SPLIT_DATA_PATH}/test/labels", exist_ok=True)
 
 
-def get_shuffle_names():
-    names_list = os.listdir("DataSet/all")
+def get_shuffle_names(path):
+    names_list = os.listdir(path)
     unique_names = []
     for name in names_list:
         if name.split('.')[0] != "":
