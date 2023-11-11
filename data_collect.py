@@ -82,8 +82,6 @@ class DataCollect:
                         time_now = extract_time_now()
                         # save the image
                         cv2.imwrite(f"{OUTPUT_DATA_DIR}/{time_now}.jpg", img)
-                        # save the properties in text file
-                        save_properties_in_txt(info_list, time_now)
 
             cv2.imshow("Image", img_out)
 
