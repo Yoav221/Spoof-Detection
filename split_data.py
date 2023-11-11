@@ -28,7 +28,7 @@ print(f"Total images: {total_img_count}\nTrain = {len(output[0])}, Validation = 
 
 
 # Copy the files to the relevant directory:
-copy_files(output)
+copy_files(output, input_path=INPUT_DATA_PATH, output_path=SPLIT_DATA_PATH)
 print("Split process completed.")
 
 # Create the data.yaml file for the YOLO Training
