@@ -13,14 +13,17 @@ CLASS_ID = 1  # 1 for REAL, 0 for FAKE
 
 detector = FaceDetector()
 
+# create list of images names
 img_names_list = []
 for img in images:
     img_name = img.split(".")[0]
     if img_name != "":
         img_names_list.append(img_name)
 
+# loop over every image
 for img_name in img_names_list:
     img = cv2.imread(f"{IMAGES_PATH}/{img_name}.jpg")
+    # find face in each image
     img, bboxes = detector.findFaces(img)
 
     info_list = []
@@ -31,9 +34,8 @@ for img_name in img_names_list:
         for bbox in bboxes:
             # bbox contains 'id', 'bbox', 'score', 'center'
             x, y, w, h = bbox["bbox"]
-            # check the score
+            # check if score above confidence
             score = bbox["score"][0]
-            # make sure that we're capturing real face
             if score > CONFIDENCE:
                 # changing the size of the bounding box to larger one
                 x, y, w, h = offset(x, y, w, h)
