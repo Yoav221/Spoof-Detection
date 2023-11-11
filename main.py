@@ -48,9 +48,9 @@ while True:
                 else:
                     color = (0, 0, 255)
                 # draw rectangle and class name
-                cvzone.cornerRect(img, (x1, y1, w, h), colorC=color, colorR=color)
+                cv2.rectangle(img, (x1, y1, w, h), color=color, thickness=3)
                 cvzone.putTextRect(img, f'{classNames[cls].upper()} {int(conf*100)}%',
-                                   (max(0, x1), max(35, y1)), scale=2, thickness=4, colorR=color,
+                                   (max(0, x1), max(35, y1)), scale=2, thickness=3, colorR=color,
                                    colorB=color)
                 # writing frames for prediction video
                 if prediction_video_input:
