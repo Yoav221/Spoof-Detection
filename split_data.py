@@ -5,9 +5,11 @@ from itertools import islice
 from const import *
 from functions import *
 
+# INPUT_DATA_PATH = "DataSet/DataCollect" # For testing
+
 # Create directories and get the unique names:
 create_directories(SPLIT_DATA_PATH)
-unique_names = get_shuffle_names()
+unique_names = get_shuffle_names(path=INPUT_DATA_PATH)
 
 # Calculate the length of train/val/test set:
 total_img_count = len(unique_names)
