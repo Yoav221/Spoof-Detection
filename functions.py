@@ -35,19 +35,6 @@ def initialize_webcam():
     return cap
 
 
-def create_video_for_fake_training(cap, path="Videos for fake training/"):
-    frame_width = int(cap.get(3))
-    frame_height = int(cap.get(4))
-    size = (frame_width, frame_height)
-    counter_video_name = 1
-    while True:
-        file_name = f"{path}video_for_fake_{counter_video_name}.avi"
-        if not os.path.exists(file_name):
-            result = cv2.VideoWriter(file_name, cv2.VideoWriter_fourcc(*'MJPG'), 24, size)
-            break
-        counter_video_name += 1
-    return result
-
 def extract_time_now():
     time_now = time.time()
     time_now = str(time_now).split('.')

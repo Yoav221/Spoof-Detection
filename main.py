@@ -10,6 +10,7 @@ prediction_video_input = input("If you want to save the video - type, else pass.
 MODEL_PATH = "Models/9_nov_10_epochs.pt"
 CONFIDENCE = 0.6
 
+
 # webcam/video
 cap = cv2.VideoCapture(0)
 cap.set(3, 640)
