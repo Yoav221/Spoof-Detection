@@ -5,26 +5,22 @@ from const import *
 from time import time
 from functions import *
 
+# -------------- IGNORE THIS CODE ------------------
+# THIS CODE IS COMBINATION OF COLLECTING AND LABELING
+
+
 # constants
 CLASS_ID = int(input("Are you collecting: Fake (0) or Real (1)? "))  # 0 is fake, 1 is real
 SAVE = input("Would you like to save the data? (y or any other letter...) ")
-SAVE_FAKE_VIDEOS = False
 
 cap = initialize_webcam()
 detector = FaceDetector()
-
-if SAVE_FAKE_VIDEOS:
-    result = create_video_for_fake_training(cap)
 
 while True:
     # read the current frame from the webcam
     success, img = cap.read()
     print(img)
     img_out = img.copy()
-
-    # write frame to the fake training video
-    if success and SAVE_FAKE_VIDEOS:
-        result.write(img)
 
     # detect faces in the image
     img, bboxes = detector.findFaces(img, draw=False)
