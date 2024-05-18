@@ -34,22 +34,8 @@ Then, it saves each set to its relevant directory, and at the end creates data.y
 Training process
 We train the model locally in the train.py module. The dataset I’ve collected contains 4,500 images, and according to the split ratio: 0.7*4,500 = 3,150 images are for training.
 
-Results (10 epochs)
-
-
-
-
-
-
-
-
-
-
-
-
 Prediction process
 The prediction process is done by the main.py module. First, we choose on what we want to predict on - existing video or live webcam. Then, we load the weights of the model and we begin a loop where the model is making a prediction on each frame whether the face that has being detected is Real or Fake, and we display it with OpenCV.
-
 
 Code Instructions:
 -	Collect data: on data_collect.py choose if you want to save the data locally, and if you want a video of the recording. Then run the script.
@@ -58,23 +44,7 @@ Code Instructions:
 -	Train the YOLO model: run train.py.
 -	Predict: define the trained model’s path in main.py and run the script. (There’s an option to save the prediction by typing in the terminal)
 
-
-
-
-
-
-
-
-
-
-
 Future Work
 -	Collect bigger dataset with many more different people, with different accessories, in different location and different look, while collecting more fake data from TV/print images.
 -	Train the model on a larger number of epochs on a stronger computer with much more computing power.
 -	In addition to the data collecting, it is possible to do web scraping to collect more data online, and then label them using my code.
-
-Sources:
-YOLO dataset format - https://docs.ultralytics.com/datasets/detect/, https://medium.com/red-buffer/converting-a-custom-dataset-from-coco-format-to-yolo-format-6d98a4fd43fc
-FaceDetector tutorial - https://www.youtube.com/watch?v=LqzPifvd09Q
-FaceDetector copyright - Copyright (c) 2021 Vizdx LLC, Computer Vision Zone, https://www.computervision.zone/
-![image](https://github.com/Yoav221/Spoof-Detection/assets/105441254/ac70d671-8436-4bab-ae75-f0328f123ed3)
