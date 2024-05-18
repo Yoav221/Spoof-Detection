@@ -1,9 +1,11 @@
 Spoofing Face Detection in Videos
 
 Objective
+
 In order to detect spoof attacks in videos, I use the YOLOv8n algorithm that divides an image into a grid and predicts bounding boxes and class probabilities. The process of classifying whether the faces in the video are Real or Fake, is a binary classification problem, thus we need to train the YOLO model on 2 classes – Real and Fake images.
 
 Why YOLO? 
+
 •	Speed: YOLO algorithm works faster and more efficient compare to other object detection algorithms. Its speed allows it to process images and videos in real-time. 
 •	Performance: It processes the image in a single forward pass, which making it particularly suitable for applications such as videos and making YOLO much simpler compared to other algorithms like Faster-RCNN.
 •	Bounding box: YOLO provides a unified framework for object detection and classification. It’s detecting bounding box coordinates and predicting class probabilities simultaneously.
@@ -17,14 +19,17 @@ To train the YOLO model, our dataset needs to be in the YOLO format. In this for
 •	X and y coordinates should be the mid-point of the bounding box. 
 
 Data collecting
+
 We collect the data using data_collect.py module. In this module, we’re using OpenCV VideoCapture in order to read each frame of the live-cam video, and the FaceDetector class in the cvzone package in order to capture the images containing faces with blurriness and score above the threshold we defined. 
 The Dataset I collected contains videos of real faces of different people on different locations. For each video, I also collected “fake” videos, meaning I played the original video on my iPad while recording it on my webcam. 
 This way I got for each real video its fake version.
 
 Data labeling
+
 According to the YOLO format mentioned above, we create for each image its text file. This is done on data_labeling.py module. We need to specify the images directory path and the text file will be created on the same directory as the images.
 
 Splitting the data
+
 This is the time where we want to create directories according to the YOLO training requirements, while also splitting the data to train set, validation set and test set.
 This process is done in the split_data.py module, which splits the whole images to train, validation and test sets according to the split_ratio I defined in const.py :
 split_ratio = {'train': 0.7, 'validation': 0.2, 'test': 0.1}
